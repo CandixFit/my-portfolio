@@ -3,14 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Person – Ahmet Can Cingöz</title>
+  <title>My Person – Can Cingöz</title>
   <style>
     body {
       background-color: #0d1b2a;
       color: white;
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
+    }
+
+    nav {
+      background-color: #1b263b;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
     }
 
     header, footer {
@@ -25,7 +45,18 @@
     .container {
       max-width: 900px;
       margin: auto;
-      padding: 20px;
+      padding: 40px 20px;
+    }
+
+    .home {
+      text-align: center;
+    }
+
+    .home img {
+      max-width: 200px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      border: 4px solid white;
     }
 
     .about-flex {
@@ -83,35 +114,55 @@
       background-color: #415a77;
     }
 
-    .contact {
+    .contact, .projects {
       background-color: #1b263b;
       padding: 20px;
       border-radius: 5px;
     }
+
+    .projects a {
+      color: #89c2d9;
+      display: block;
+      margin: 10px 0;
+      text-decoration: none;
+    }
+
+    .projects a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>My Person</h1>
-    <p>Ahmet Can Cingöz – Mein beruflicher Weg</p>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#impressum">Impressum</a>
+  </nav>
+
+  <header class="home" id="home">
+    <img src="img/Unbenannt.png" alt="Profilbild Can" />
+    <h1>Hallo, ich bin Can</h1>
+    <p>Auszubildender in Fachinformatik für Anwendungsentwicklung</p>
   </header>
 
   <div class="container">
     <section id="about">
-      <h2>Über mich</h2>
+      <h2>About</h2>
       <div class="about-flex">
         <img src="img/left-photo.jpg" alt="Linkes Bild" />
         <p>
-          Mit meiner disziplinierten Arbeitsweise und einem starken Fokus auf persönliche Weiterentwicklung bringe ich nicht nur technische Kompetenz, sondern auch unternehmerisches Denken ins Team.
+          Ich bin ein technikbegeisterter Quereinsteiger mit handwerklichem Hintergrund, der in der Softwareentwicklung seine neue Leidenschaft gefunden hat.
         </p>
         <img src="img/right-photo.jpg" alt="Rechtes Bild" />
       </div>
-    </section>
 
-    <section id="timeline">
-      <h2>Lebenslauf – Slideshow</h2>
       <div class="slideshow">
-        <div id="slide" class="visible"></div>
+        <h3>Berufserfahrung & Ausbildung</h3>
+        <img id="slideImage" src="img/vaillant.jpg" alt="Slideshow-Bild" style="max-width: 100%; max-height: 200px; margin-bottom: 15px; border-radius: 10px;" />
+<div id="slide" class="visible"></div>
+
         <div class="controls">
           <button onclick="prevSlide()">Zurück</button>
           <button onclick="nextSlide()">Weiter</button>
@@ -119,40 +170,62 @@
       </div>
     </section>
 
-    <section id="contact">
-      <h2>Kontakt</h2>
-      <div class="contact">
-        <p>Email: <a href="mailto:can.cngz@outlook.de" style="color: #ffffff;">can.cngz@outlook.de</a></p>
-        <p>Telefon: 0170 544 1938</p>
-        <p>Adresse: Hof Güldenwerth 17, 42857 Remscheid</p>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects">
+        <p>Hier sind einige meiner Projekte auf GitHub:</p>
+        <a href="https://github.com/CandixFit/GreetBot2" target="_blank">Projekt 1: GreetBot</a>
+        <a href="https://github.com/CandixFit/AstroBudget" target="_blank">Projekt 2: AstroBudget</a>
+        <a href="https://github.com/CandixFit/CRM" target="_blank">Projekt 3: CRM</a>
+        <!-- Weitere Links nach Bedarf einfügen -->
       </div>
     </section>
+
+
   </div>
 
   <footer>
-    <p>© 2025 Ahmet Can Cingöz</p>
+    <p>© 2025 Can Cingöz</p>
   </footer>
 
   <script>
     const slides = [
-      "07.2012 – 05.2015: Reifen Wrona – Aushilfe als Reifenmonteur",
-      "08.2015 – 10.2017: Reifen Rinaldi – Aushilfe als Reifenmonteur",
-      "10.2017 – 02.2020: Tente-Rollen – Produktionshelfer",
-      "02.2021 – 04.2024: Vaillant Deutschland – Lötung, Montage, Wartung",
-      "01.2025 – 02.2027: Online Akademie – Ausbildung zum Fachinformatiker"
-    ];
+  {
+    text: "07.2012 – 05.2015: Reifen Wrona – Aushilfe als Reifenmonteur",
+    img: "img/wrona.jpg"
+  },
+  {
+    text: "08.2015 – 10.2017: Reifen Rinaldi – Aushilfe als Reifenmonteur",
+    img: "img/rinaldi.jpg"
+  },
+  {
+    text: "10.2017 – 02.2020: Tente-Rollen – Produktionshelfer",
+    img: "img/tente.jpg"
+  },
+  {
+    text: "02.2021 – 04.2024: Vaillant Deutschland – Lötung, Montage, Wartung",
+    img: "img/vaillant.jpg"
+  },
+  {
+    text: "01.2025 – 02.2027: Online Akademie – Ausbildung zum Fachinformatiker",
+    img: "img/akademie.jpg"
+  }
+];
 
-    let currentSlide = 0;
+
     const slideElement = document.getElementById("slide");
+    const imageElement = document.getElementById("slideImage");
 
     function showSlide(index) {
       slideElement.classList.remove("visible");
       setTimeout(() => {
-        slideElement.textContent = slides[index];
+        slideElement.textContent = slides[index].text;
+        imageElement.src = slides[index].img;
         slideElement.classList.add("visible");
-      }, 300);
-    }
+     }, 300);
+}
 
+    let currentSlide = 0;
     function nextSlide() {
       currentSlide = (currentSlide + 1) % slides.length;
       showSlide(currentSlide);
@@ -163,11 +236,24 @@
       showSlide(currentSlide);
     }
 
-    // Autoplay alle 4 Sekunden
+    // Autoplay
     setInterval(nextSlide, 4000);
 
     // Initial anzeigen
     showSlide(currentSlide);
   </script>
+<section id="impressum">
+  <div class="container">
+    <h2>Impressum</h2>
+    <div class="contact">
+      <p><strong>Angaben gemäß § 5 TMG:</strong></p>
+      <p>Can Cingöz<br>Zuhause<br>42857 Remscheid<br>Deutschland</p>
+      <p><strong>Kontakt:</strong></p>
+      <p>Telefon: 0170 544 1938<br>E-Mail: <a href="mailto:can.cngz@outlook.de" style="color: #ffffff;">can.cngz@outlook.de</a></p>
+      <p><strong>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</strong><br>Can Cingöz</p>
+    </div>
+  </div>
+</section>
+
 </body>
 </html>
