@@ -4,32 +4,48 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Person – Can Cingöz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #007acc;
+      --dark: #0d1b2a;
+      --accent: #89c2d9;
+      --light: #e6f0fa;
+      --white: #ffffff;
+      --text: #f0f0f0;
+    }
+
     body {
-      background-color: #0d1b2a;
-      color: white;
-      font-family: Arial, sans-serif;
+      background-color: var(--dark);
+      color: var(--text);
+      font-family: 'Roboto', sans-serif;
       margin: 0;
     }
 
     nav {
-      background-color: #1b263b;
-      display: flex;
-      justify-content: center;
-      padding: 10px;
+      background-color: var(--primary);
       position: sticky;
       top: 0;
       z-index: 1000;
     }
 
-    nav a {
-      color: white;
+    .nav-links {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 10px;
+      gap: 20px;
+    }
+
+    .nav-links li a {
+      color: var(--white);
       text-decoration: none;
-      margin: 0 20px;
+      font-family: 'Poppins', sans-serif;
       font-weight: bold;
     }
 
-    nav a:hover {
+    .nav-links li a:hover {
       text-decoration: underline;
     }
 
@@ -39,7 +55,8 @@
     }
 
     h1, h2 {
-      color: #ffffff;
+      font-family: 'Poppins', sans-serif;
+      color: var(--white);
     }
 
     .container {
@@ -80,7 +97,7 @@
     .slideshow {
       text-align: center;
       padding: 20px;
-      border: 2px solid #ffffff;
+      border: 2px solid var(--white);
       border-radius: 10px;
       margin: 20px 0;
       min-height: 120px;
@@ -101,7 +118,7 @@
     }
 
     .controls button {
-      background-color: #1b263b;
+      background-color: var(--primary);
       color: white;
       border: none;
       padding: 10px 20px;
@@ -111,7 +128,7 @@
     }
 
     .controls button:hover {
-      background-color: #415a77;
+      background-color: #005fa3;
     }
 
     .contact, .projects {
@@ -121,7 +138,7 @@
     }
 
     .projects a {
-      color: #89c2d9;
+      color: var(--accent);
       display: block;
       margin: 10px 0;
       text-decoration: none;
@@ -130,15 +147,41 @@
     .projects a:hover {
       text-decoration: underline;
     }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .about-flex {
+        flex-direction: column;
+      }
+
+      .about-flex img {
+        max-width: 100px;
+      }
+
+      .team-member {
+        width: 90%;
+      }
+
+      form {
+        width: 100%;
+        padding: 0 10px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#impressum">Impressum</a>
+    <ul class="nav-links">
+      <li><a href="#home">Start</a></li>
+      <li><a href="#about">Über mich</a></li>
+      <li><a href="#projects">Projekte</a></li>
+      <li><a href="#impressum">Impressum</a></li>
+    </ul>
   </nav>
 
   <header class="home" id="home">
@@ -147,41 +190,43 @@
     <p>Auszubildender in Fachinformatik für Anwendungsentwicklung</p>
   </header>
 
-  <div class="container">
-    <section id="about">
-      <h2>About</h2>
-      <div class="about-flex">
-        <img src="img/left-photo.jpg" alt="Linkes Bild" />
-        <p>
-          Ich bin ein technikbegeisterter Quereinsteiger mit handwerklichem Hintergrund, der in der Softwareentwicklung seine neue Leidenschaft gefunden hat.
-        </p>
-        <img src="img/right-photo.jpg" alt="Rechtes Bild" />
+  <div class="container" id="about">
+    <h2>Über mich</h2>
+    <div class="about-flex">
+      <img src="img/left-photo.jpg" alt="Linkes Bild" />
+      <p>Ich bin ein technikbegeisterter Quereinsteiger mit handwerklichem Hintergrund, der in der Softwareentwicklung seine neue Leidenschaft gefunden hat.</p>
+      <img src="img/right-photo.jpg" alt="Rechtes Bild" />
+    </div>
+
+    <div class="slideshow">
+      <h3>Berufserfahrung & Ausbildung</h3>
+      <img id="slideImage" src="img/vaillant.jpg" alt="Slideshow-Bild" style="max-width: 100%; max-height: 200px; margin-bottom: 15px; border-radius: 10px;" />
+      <div id="slide" class="visible"></div>
+      <div class="controls">
+        <button onclick="prevSlide()">Zurück</button>
+        <button onclick="nextSlide()">Weiter</button>
       </div>
+    </div>
+  </div>
 
-      <div class="slideshow">
-        <h3>Berufserfahrung & Ausbildung</h3>
-        <img id="slideImage" src="img/vaillant.jpg" alt="Slideshow-Bild" style="max-width: 100%; max-height: 200px; margin-bottom: 15px; border-radius: 10px;" />
-<div id="slide" class="visible"></div>
+  <div class="container" id="projects">
+    <h2>Projekte</h2>
+    <div class="projects">
+      <p>Hier sind einige meiner Projekte auf GitHub:</p>
+      <a href="https://candixfit.github.io/GreetBot2/" target="_blank">Projekt 1: GreetBot</a>
+      <a href="https://candixfit.github.io/AstroBudget/" target="_blank">Projekt 2: AstroBudget</a>
+      <a href="https://candixfit.github.io/CRM/" target="_blank">Projekt 3: CRM</a>
+    </div>
+  </div>
 
-        <div class="controls">
-          <button onclick="prevSlide()">Zurück</button>
-          <button onclick="nextSlide()">Weiter</button>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="projects">
-        <p>Hier sind einige meiner Projekte auf GitHub:</p>
-        <a href="https://candixfit.github.io/GreetBot2/" target="_blank">Projekt 1: GreetBot</a>
-        <a href="https://candixfit.github.io/AstroBudget/" target="_blank">Projekt 2: AstroBudget</a>
-        <a href="https://candixfit.github.io/CRM/" target="_blank">Projekt 3: CRM</a>
-        <!-- Weitere Links nach Bedarf einfügen -->
-      </div>
-    </section>
-
-
+  <div class="container" id="impressum">
+    <h2>Impressum</h2>
+    <div class="contact">
+      <p><strong>Angaben gemäß § 5 TMG:</strong></p>
+      <p>Can Cingöz<br>Zuhause<br>42857 Remscheid<br>Deutschland</p>
+      <p><strong>Kontakt:</strong><br>Telefon: 0170 544 1938<br>E-Mail: <a href="mailto:can.cngz@outlook.de" style="color: #ffffff;">can.cngz@outlook.de</a></p>
+      <p><strong>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</strong><br>Can Cingöz</p>
+    </div>
   </div>
 
   <footer>
@@ -190,28 +235,12 @@
 
   <script>
     const slides = [
-  {
-    text: "07.2012 – 05.2015: Reifen Wrona – Aushilfe als Reifenmonteur",
-    img: "img/wrona.jpg"
-  },
-  {
-    text: "08.2015 – 10.2017: Reifen Rinaldi – Aushilfe als Reifenmonteur",
-    img: "img/rinaldi.jpg"
-  },
-  {
-    text: "10.2017 – 02.2020: Tente-Rollen – Produktionshelfer",
-    img: "img/tente.jpg"
-  },
-  {
-    text: "02.2021 – 04.2024: Vaillant Deutschland – Lötung, Montage, Wartung",
-    img: "img/vaillant.jpg"
-  },
-  {
-    text: "01.2025 – 02.2027: Online Akademie – Ausbildung zum Fachinformatiker",
-    img: "img/akademie.jpg"
-  }
-];
-
+      { text: "07.2012 – 05.2015: Reifen Wrona – Aushilfe als Reifenmonteur", img: "img/wrona.jpg" },
+      { text: "08.2015 – 10.2017: Reifen Rinaldi – Aushilfe als Reifenmonteur", img: "img/rinaldi.jpg" },
+      { text: "10.2017 – 02.2020: Tente-Rollen – Produktionshelfer", img: "img/tente.jpg" },
+      { text: "02.2021 – 04.2024: Vaillant Deutschland – Lötung, Montage, Wartung", img: "img/vaillant.jpg" },
+      { text: "01.2025 – 02.2027: Online Akademie – Ausbildung zum Fachinformatiker", img: "img/akademie.jpg" }
+    ];
 
     const slideElement = document.getElementById("slide");
     const imageElement = document.getElementById("slideImage");
@@ -222,10 +251,11 @@
         slideElement.textContent = slides[index].text;
         imageElement.src = slides[index].img;
         slideElement.classList.add("visible");
-     }, 300);
-}
+      }, 300);
+    }
 
     let currentSlide = 0;
+
     function nextSlide() {
       currentSlide = (currentSlide + 1) % slides.length;
       showSlide(currentSlide);
@@ -236,24 +266,8 @@
       showSlide(currentSlide);
     }
 
-    // Autoplay
     setInterval(nextSlide, 4000);
-
-    // Initial anzeigen
     showSlide(currentSlide);
   </script>
-<section id="impressum">
-  <div class="container">
-    <h2>Impressum</h2>
-    <div class="contact">
-      <p><strong>Angaben gemäß § 5 TMG:</strong></p>
-      <p>Can Cingöz<br>Zuhause<br>42857 Remscheid<br>Deutschland</p>
-      <p><strong>Kontakt:</strong></p>
-      <p>Telefon: 0170 544 1938<br>E-Mail: <a href="mailto:can.cngz@outlook.de" style="color: #ffffff;">can.cngz@outlook.de</a></p>
-      <p><strong>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</strong><br>Can Cingöz</p>
-    </div>
-  </div>
-</section>
-
 </body>
 </html>
