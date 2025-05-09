@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Person – Ahmet Can Cingöz</title>
+  <style>
+    body {
+      background-color: #0d1b2a;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header, footer {
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1, h2 {
+      color: #ffffff;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .about-flex {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .about-flex img {
+      max-width: 150px;
+      border-radius: 10px;
+    }
+
+    .about-flex p {
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .slideshow {
+      text-align: center;
+      padding: 20px;
+      border: 2px solid #ffffff;
+      border-radius: 10px;
+      margin: 20px 0;
+      min-height: 120px;
+      position: relative;
+    }
+
+    #slide {
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    #slide.visible {
+      opacity: 1;
+    }
+
+    .controls {
+      margin-top: 15px;
+    }
+
+    .controls button {
+      background-color: #1b263b;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .controls button:hover {
+      background-color: #415a77;
+    }
+
+    .contact {
+      background-color: #1b263b;
+      padding: 20px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Person</h1>
+    <p>Ahmet Can Cingöz – Mein beruflicher Weg</p>
+  </header>
+
+  <div class="container">
+    <section id="about">
+      <h2>Über mich</h2>
+      <div class="about-flex">
+        <img src="img/left-photo.jpg" alt="Linkes Bild" />
+        <p>
+          Mit meiner disziplinierten Arbeitsweise und einem starken Fokus auf persönliche Weiterentwicklung bringe ich nicht nur technische Kompetenz, sondern auch unternehmerisches Denken ins Team.
+        </p>
+        <img src="img/right-photo.jpg" alt="Rechtes Bild" />
+      </div>
+    </section>
+
+    <section id="timeline">
+      <h2>Lebenslauf – Slideshow</h2>
+      <div class="slideshow">
+        <div id="slide" class="visible"></div>
+        <div class="controls">
+          <button onclick="prevSlide()">Zurück</button>
+          <button onclick="nextSlide()">Weiter</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Kontakt</h2>
+      <div class="contact">
+        <p>Email: <a href="mailto:can.cngz@outlook.de" style="color: #ffffff;">can.cngz@outlook.de</a></p>
+        <p>Telefon: 0170 544 1938</p>
+        <p>Adresse: Hof Güldenwerth 17, 42857 Remscheid</p>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2025 Ahmet Can Cingöz</p>
+  </footer>
+
+  <script>
+    const slides = [
+      "07.2012 – 05.2015: Reifen Wrona – Aushilfe als Reifenmonteur",
+      "08.2015 – 10.2017: Reifen Rinaldi – Aushilfe als Reifenmonteur",
+      "10.2017 – 02.2020: Tente-Rollen – Produktionshelfer",
+      "02.2021 – 04.2024: Vaillant Deutschland – Lötung, Montage, Wartung",
+      "01.2025 – 02.2027: Online Akademie – Ausbildung zum Fachinformatiker"
+    ];
+
+    let currentSlide = 0;
+    const slideElement = document.getElementById("slide");
+
+    function showSlide(index) {
+      slideElement.classList.remove("visible");
+      setTimeout(() => {
+        slideElement.textContent = slides[index];
+        slideElement.classList.add("visible");
+      }, 300);
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    // Autoplay alle 4 Sekunden
+    setInterval(nextSlide, 4000);
+
+    // Initial anzeigen
+    showSlide(currentSlide);
+  </script>
+</body>
+</html>
