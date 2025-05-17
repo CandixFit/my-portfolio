@@ -1,0 +1,5 @@
+.# JetBrains IDE configs
+.idea/
+
+# Backup-Repos
+my-portfolio-backup/
